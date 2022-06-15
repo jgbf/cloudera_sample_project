@@ -2,7 +2,12 @@ import os
 from pyspark.sql.functions import desc
 from pyspark.sql.functions import col
 
+from pyspark.context import SparkContext
+from pyspark.sql.session import SparkSession
+
 def read_files(folder: str):
+    sc = SparkContext('local')
+    spark = SparkSession(sc)
     return spark.read.option('header', 'true').csv(folder)
 
 def main():
