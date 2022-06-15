@@ -11,7 +11,7 @@ def read_files(folder: str):
     return spark.read.option('header', 'true').csv(folder)
 
 def main():
-    data = read_files('/nifi/decompresed')
+    data = read_files('/nifi/decompressed')
 
     # Get the most departued airport
     top_dep = data.groupby('Origin').count().sort(desc('count'))
